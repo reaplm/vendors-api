@@ -1,16 +1,25 @@
 package com.reaplm.vendorapi.controller;
 
+import static org.mockito.Mockito.when;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+
+import com.reaplm.vendorapi.model.Vendor;
+import com.reaplm.vendorapi.service.VendorService;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -20,8 +29,12 @@ public class VendorControllerAcceptanceTest {
 	@Autowired
 	MockMvc mockMvc;
 	
+	@MockBean
+	private VendorService vendorService;
+	
 	@Test
 	void testGetVendors() throws Exception {
+		when(vendorService.getVendors()).thenReturn(getVendors());
 		
 		mockMvc.perform(MockMvcRequestBuilders
 				.get("/"))
@@ -33,6 +46,22 @@ public class VendorControllerAcceptanceTest {
 				.andExpect(MockMvcResultMatchers.status().isOk());
 
 			
+	}
+	private List<Vendor> getVendors(){
+		List<Vendor> vendors = new ArrayList<>();
+		vendors.add(
+				Vendor.builder()
+					.name("Vendor 1")
+					.location("Gaborone")
+					.build()
+				);
+		vendors.add(
+				Vendor.builder()
+					.name("Vendor 2")
+					.location("Mogoditshane")
+					.build()
+				);
+		return vendors;
 	}
 
 }

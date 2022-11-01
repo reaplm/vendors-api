@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -21,8 +22,7 @@ import com.reaplm.vendorapi.model.Vendor;
 import com.reaplm.vendorapi.service.VendorService;
 
 
-@WebMvcTest(value = VendorControllerAcceptanceTest.class, 
-	excludeAutoConfiguration = {SecurityAutoConfiguration.class})
+@WebMvcTest(excludeAutoConfiguration = {SecurityAutoConfiguration.class})
 public class VendorControllerIntegrationTest {
 
 	@Autowired
