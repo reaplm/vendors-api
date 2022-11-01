@@ -48,7 +48,7 @@ class VendorRepositoryTest {
 		Vendor vendor = repository.findById(1).get();
 		
 		assertThat(vendor).isNotNull();
-		assertThat(vendor.get_id()).isEqualTo(1);
+		assertThat(vendor.getId()).isEqualTo(1);
 	}
 
 	@Test

@@ -1,5 +1,6 @@
 package com.reaplm.vendorapi.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,13 +30,14 @@ public class Vendor {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int _id;
+	@Column(name = "pk_vendor_id")
+	private int id;
 	
 	private String category;
 	private String imageUrl;
 	private String location;
 	private String name;
 	private String overview;
-	private String[] tags;
+	//private String[] tags;
 
 }
