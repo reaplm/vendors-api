@@ -33,11 +33,15 @@ public class Vendor {
 	@Column(name = "pk_vendor_id")
 	private int id;
 	
-	private String category;
+	@Column(name = "image_url")
 	private String imageUrl;
+	
+	@Column(columnDefinition = "TEXT")
+	private String overview;
+	
+	private String category;
 	private String location;
 	private String name;
-	private String overview;
 	//private String[] tags;
 
 }
