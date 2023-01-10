@@ -32,13 +32,14 @@ public class Vendor {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "pk_vendor_id")
 	private int id;
-	
+
 	@Column(name = "image_url")
 	private String imageUrl;
 	
 	@Column(columnDefinition = "TEXT")
 	private String overview;
 	
+	private String uid;
 	private String category;
 	private String location;
 	private String name;
